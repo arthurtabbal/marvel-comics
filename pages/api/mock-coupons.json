@@ -1,0 +1,11 @@
+[{
+    "code": "cupom12345",
+    "type": "rare",
+    "discount": 5
+},
+{
+    "code": "cupom54321",
+    "type": "common",
+    "discount": 10
+}
+]
