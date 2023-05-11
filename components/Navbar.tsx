@@ -1,5 +1,5 @@
-import Link from "next/link";
-import styled from "styled-components";
+import Link from 'next/link'
+import styled from 'styled-components'
 
 const Nav = styled.nav`
   display: flex;
@@ -7,45 +7,46 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-`;
+`
 
 const MarvelLogo = styled.h4`
   background-color: red;
   color: white;
   align-self: center;
-  padding: 5px;
-  font-size: 1.2rem;
-  font-weight: 600;
+  padding: 0px 3px 3px 3px;
+  font-family: 'vina sans', sans-serif;
+  font-weight: 100;
+  font-size: 2rem;
   text-transform: uppercase;
-`;
+`
 
 const NavLinks = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-`;
+`
 
 const LinkItem = styled.li`
   list-style: none;
   margin: 0 0.75rem;
   text-transform: uppercase;
-`;
+`
 
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
   wrap: wrap;
-`;
+`
 
 const ComicsH1 = styled.h1`
   padding: 1rem;
   justify-self: center;
-`;
+`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
-`;
+`
 
 export default function Navbar() {
   return (
@@ -67,5 +68,5 @@ export default function Navbar() {
         </LinkItem>
       </NavLinks>
     </Nav>
-  );
+  )
 }

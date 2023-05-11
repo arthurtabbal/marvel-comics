@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Marvel:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Marvel:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Vina+Sans&display=swap');
 
 *,
 *::before,
@@ -9,7 +10,8 @@
 }
 
 body {
-  font-family: Marvel;
+  font-family: 'Marvel', serif;
+  font-weight: 700;
   color: whitesmoke;
   background-color: black;
 }
