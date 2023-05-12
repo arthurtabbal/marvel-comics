@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Detalhamento do exercício
+
+Ferramentas utilizadas:
+
+-NextJS como framework, facilitando o deploy para o Vercel
+
+-Redux para gerenciamento de estado - itens dentro do carrinho de compras/n
+
+-Marvel API para consumo de dados
+
+-SyledComponents como ponte para estilização CSS
+
+-InfiniteScroll para carregamento em lotes de dados
+
+-ReactTypeAnimation para animação de texto na tela inicial
+
+Link do app na vercel: https://marvel-comics-pi.vercel.app/
 
 ## Getting Started
 
