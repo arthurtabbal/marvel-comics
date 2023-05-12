@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { addToCart } from 'redux/cart.slice'
 import RareSticker from './RareSticker'
+import cogoToast from 'cogo-toast'
 
 const WIDTH = 220
 
@@ -60,6 +61,7 @@ const ComicsCard: React.FC<Props> = (props) => {
       <Button
         onClick={() => {
           dispatch(addToCart(comics))
+          cogoToast.success('Added to Cart')
         }}
       >
         Add to Cart
