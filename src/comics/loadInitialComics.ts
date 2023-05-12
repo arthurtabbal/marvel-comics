@@ -1,15 +1,5 @@
 import crypto from 'crypto-js'
 
-export interface Price {
-  type: string
-  price: number
-}
-
-export interface ImageSrc {
-  path: string
-  extension: string
-}
-
 export interface Comics {
   id: number
   digitalId: number
@@ -20,9 +10,24 @@ export interface Comics {
   thumbnail: ImageSrc
   quantity: number
   rare: boolean
+  series: Series
 }
 
-export default async function loadAllComics(length: number) {
+export interface Price {
+  type: string
+  price: number
+}
+
+export interface ImageSrc {
+  path: string
+  extension: string
+}
+
+export interface Series {
+  name: string
+}
+
+export default async function loadInitialComics(length: number) {
   const offset = length ? length : 0
   const ts = new Date().getTime()
   const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY

@@ -1,4 +1,4 @@
-import { Comics } from '@src/comics/load-all-comics'
+import { Comics } from '@src/comics/loadInitialComics'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'

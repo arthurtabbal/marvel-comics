@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Comics } from '@src/comics/load-all-comics'
+import { Comics } from '@src/comics/loadInitialComics'
 
 export interface Cart {
   items: Comics[]

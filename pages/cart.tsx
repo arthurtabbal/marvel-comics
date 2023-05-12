@@ -40,13 +40,6 @@ const Row = styled.div`
   margin-bottom: 1rem;
 `
 
-const ImgContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 7%;
-`
-
 const Buttons = styled.div`
   background-color: black;
   color: black;
@@ -67,7 +60,9 @@ const Cell = styled.div`
 const TotalPrice = styled.h2`
   margin-right: 5%;
 `
-
+const EmptyCart = styled.div`
+  text-align: center;
+`
 export default function Cart() {
   const cart = useSelector((state: CartState) => state.cart.items)
   console.log(cart)
@@ -81,7 +76,9 @@ export default function Cart() {
   return (
     <Container>
       {cart.length === 0 ? (
-        <h1>Your Cart is Empty!</h1>
+        <EmptyCart>
+          <h1>Your Cart is Empty!</h1>
+        </EmptyCart>
       ) : (
         <>
           <Header>

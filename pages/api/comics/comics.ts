@@ -1,4 +1,4 @@
-import loadAllComics, { Comic } from '@src/comics/load-all-comics'
+import loadAllComics, { Comic } from '@src/comics/loadInitialComics'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
