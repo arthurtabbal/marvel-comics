@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.annihil.us'],
+    domains: ['i.annihil.us', 'www.onlygfx.com'],
   },
 }
 

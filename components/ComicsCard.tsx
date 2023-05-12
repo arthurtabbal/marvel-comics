@@ -3,10 +3,12 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { addToCart } from 'redux/cart.slice'
+import RareSticker from './RareSticker'
 
 const WIDTH = 220
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: ${WIDTH}px;
@@ -39,6 +41,7 @@ const ComicsCard: React.FC<Props> = (props) => {
   const { comics } = props
   return (
     <Container>
+      {comics.rare ? <RareSticker /> : ''}
       <Image
         alt="Comics Cover Image"
         src={
