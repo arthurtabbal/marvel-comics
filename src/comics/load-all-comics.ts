@@ -17,10 +17,13 @@ export interface Comics {
   description: string
   pageCount: number
   prices: Price[]
-  images: ImageSrc[]
+  thumbnail: ImageSrc
+  quantity: number
+  rare: boolean
 }
 
-export default async function loadAllComics() {
+export default async function loadAllComics(length: number) {
+  const offset = length ? length : 0
   const ts = new Date().getTime()
   const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY
   const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY
@@ -28,9 +31,17 @@ export default async function loadAllComics() {
     .MD5(`${ts}${privateKey}${publicKey}`)
     .toString(crypto.enc.Hex)
   const response = await fetch(
-    `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=10&offset=1000`,
+    `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=20&offset=${
+      1000 + offset
+    }`,
   )
   const result = await response.json()
   const { data } = result
   return data.results
+    .filter((comics: Comics) => {
+      return comics.thumbnail && comics.prices[0].price > 0
+    })
+    .map((comics: Comics) => {
+      return { ...comics, rare: Math.random() > 0.1 ? false : true }
+    })
 }

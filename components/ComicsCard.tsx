@@ -1,6 +1,8 @@
 import { Comics } from '@src/comics/load-all-comics'
 import Image from 'next/image'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { addToCart } from 'redux/cart.slice'
 
 const WIDTH = 220
 
@@ -33,18 +35,29 @@ export interface Props {
 }
 
 const ComicsCard: React.FC<Props> = (props) => {
+  const dispatch = useDispatch()
   const { comics } = props
   return (
     <Container>
       <Image
         alt="Comics Cover Image"
-        src={`${comics.images[0].path}.${comics.images[0].extension}`}
+        src={
+          comics.thumbnail
+            ? `${comics.thumbnail.path}.${comics.thumbnail.extension}`
+            : ''
+        }
         height={300}
         width={WIDTH}
       />
       <Title>{comics.title}</Title>
       <p>R$ {comics.prices[0].price}</p>
-      <Button>Add to Cart</Button>
+      <Button
+        onClick={() => {
+          dispatch(addToCart(comics))
+        }}
+      >
+        Add to Cart
+      </Button>
     </Container>
   )
 }

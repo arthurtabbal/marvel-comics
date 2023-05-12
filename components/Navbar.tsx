@@ -35,7 +35,6 @@ const LinkItem = styled.li`
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
-  wrap: wrap;
 `
 
 const ComicsH1 = styled.h1`
@@ -46,6 +45,7 @@ const ComicsH1 = styled.h1`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
+  font-size: 1.5rem;
 `
 
 export default function Navbar() {
