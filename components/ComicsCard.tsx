@@ -34,6 +34,7 @@ const Button = styled.button`
 
 export interface Props {
   comics: Comics
+  onClickCard(): void
 }
 
 const ComicsCard: React.FC<Props> = (props) => {
@@ -43,6 +44,7 @@ const ComicsCard: React.FC<Props> = (props) => {
     <Container>
       {comics.rare ? <RareSticker /> : ''}
       <Image
+        style={{ cursor: 'pointer' }}
         alt="Comics Cover Image"
         src={
           comics.thumbnail
@@ -51,6 +53,7 @@ const ComicsCard: React.FC<Props> = (props) => {
         }
         height={300}
         width={WIDTH}
+        onClick={props.onClickCard}
       />
       <Title>{comics.title}</Title>
       <p>R$ {comics.prices[0].price}</p>

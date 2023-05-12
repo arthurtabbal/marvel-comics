@@ -2,10 +2,9 @@ import loadAllComics, { Comics } from '@src/comics/load-all-comics'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ComicsCard from '@components/ComicsCard'
 import styled from 'styled-components'
-import React, { Suspense, useState } from 'react'
-import loadConfig from 'next/dist/server/config'
-import { PulseLoader } from 'react-spinners'
+import React, { useState } from 'react'
 import CustomLoader from '@components/CustomLoader'
+import DetailsModal from '@components/DetailsModal'
 
 interface Props {
   initialComics: Comics[]
@@ -20,7 +19,6 @@ const TitleContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 2rem;
-  text-transform: uppercase;
   margin: 0 1rem 1rem;
 `
 
@@ -36,6 +34,17 @@ const ShopPage: React.FC<Props> = (props) => {
 
   const [comics, setComics] = useState(initialComics)
   const [hasMore, setHasMore] = useState(true)
+  const [clickedComics, setClickedComics] = useState(comics[0])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  function handleModalXClick() {
+    setIsModalOpen(false)
+  }
+
+  function handleClickCard(comic: Comics) {
+    setClickedComics(comics[comics.indexOf(comic)])
+    setIsModalOpen(true)
+  }
 
   const getMoreComics = async () => {
     const newComics = await loadAllComics(comics.length + 20)
@@ -44,8 +53,13 @@ const ShopPage: React.FC<Props> = (props) => {
 
   return (
     <div>
+      <DetailsModal
+        isOpen={isModalOpen}
+        comics={clickedComics}
+        handleXClick={handleModalXClick}
+      />
       <TitleContainer>
-        <Title>Search for your favorite comics</Title>
+        <Title>Search for your favorite comics here</Title>
       </TitleContainer>
       <InfiniteScroll
         dataLength={comics.length}
@@ -56,7 +70,13 @@ const ShopPage: React.FC<Props> = (props) => {
       >
         <Grid>
           {comics.map((comic) => (
-            <ComicsCard key={comics.indexOf(comic)} comics={comic} />
+            <ComicsCard
+              onClickCard={() => {
+                handleClickCard(comic)
+              }}
+              key={comics.indexOf(comic)}
+              comics={comic}
+            />
           ))}
         </Grid>
       </InfiniteScroll>
