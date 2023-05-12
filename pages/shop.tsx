@@ -1,4 +1,4 @@
-import loadInitialComics, { Comics } from '@src/comics/loadInitialComics'
+import loadComics, { Comics } from '@src/comics/loadInitialComics'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ComicsCard from '@components/ComicsCard'
 import styled from 'styled-components'
@@ -47,7 +47,7 @@ const ShopPage: React.FC<Props> = (props) => {
   }
 
   const getMoreComics = async () => {
-    const newComics = await loadInitialComics(comics.length + 20)
+    const newComics = await loadComics(comics.length + 20)
     setComics((comics) => [...comics, ...newComics])
   }
 
@@ -86,7 +86,7 @@ const ShopPage: React.FC<Props> = (props) => {
 
 export default ShopPage
 
-export async function getStaticProps() {
-  const initialComics = await loadInitialComics(0)
+export async function getServerSideProps() {
+  const initialComics = await loadComics(0)
   return { props: { initialComics } }
 }

@@ -27,7 +27,7 @@ export interface Series {
   name: string
 }
 
-export default async function loadInitialComics(length: number) {
+export default async function loadComics(length: number) {
   console.log('Initiating fetch...')
   const offset = length ? length : 0
   const ts = new Date().getTime()
@@ -37,7 +37,7 @@ export default async function loadInitialComics(length: number) {
     .MD5(`${ts}${privateKey}${publicKey}`)
     .toString(crypto.enc.Hex)
   const response = await fetch(
-    `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=20&offset=${
+    `https://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=20&offset=${
       1000 + offset
     }`,
   )
