@@ -8,6 +8,8 @@ Ferramentas utilizadas:
 
 -Marvel API para consumo de dados
 
+-Itens recebem aleatoriamente a tag de "Raro" com 10% de probabilidade
+
 -SyledComponents como ponte para estilização CSS
 
 -InfiniteScroll para carregamento em lotes de dados
