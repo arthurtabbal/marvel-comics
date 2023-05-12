@@ -28,7 +28,6 @@ export interface Series {
 }
 
 export default async function loadComics(length: number) {
-  console.log('Initiating fetch...')
   const offset = length ? length : 0
   const ts = new Date().getTime()
   const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY
@@ -41,10 +40,8 @@ export default async function loadComics(length: number) {
       1000 + offset
     }`,
   )
-  console.log('After fetching...')
   const result = await response.json()
   const { data } = result
-  console.log(data)
   return data.results
     .filter((comics: Comics) => {
       return comics.thumbnail && comics.prices[0].price > 0
