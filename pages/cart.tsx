@@ -50,6 +50,8 @@ const ActionButton = styled.button`
   height: 1.2rem;
   width: 1.2rem;
   margin: 0.1rem;
+  color: white;
+  background-color: black;
 `
 
 const Cell = styled.div`
