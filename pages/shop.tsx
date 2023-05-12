@@ -2,7 +2,7 @@ import loadInitialComics, { Comics } from '@src/comics/loadInitialComics'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ComicsCard from '@components/ComicsCard'
 import styled from 'styled-components'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomLoader from '@components/CustomLoader'
 import DetailsModal from '@components/DetailsModal'
 
